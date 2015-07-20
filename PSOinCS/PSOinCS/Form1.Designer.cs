@@ -34,9 +34,11 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(32, 31);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(220, 21);
+            this.textBox1.Size = new System.Drawing.Size(205, 76);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Form1

@@ -31,17 +31,20 @@ namespace PSOinCS
 
         static double f1(double[] x)
         {//测试函数：超球函数
-            return x.Sum(a => a * a);
+            return x.Sum(a => a * a+1);
         }
 
-        static class Program
+       public  static class  Program
         {
             /// <summary>
             /// 应用程序的主入口点。
             /// </summary>
-            [STAThread]
-            static void Main()
+            public static string time;
+           [STAThread]
+            public static void Main()
             {
+               System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+                sw.Start();
                 for (int i = 0; i < DIM; i++)//初始化全局最优
                     gbestx[i] = rand.NextDouble() * (xmax - xmin) + xmin;
                 gbestf = double.MaxValue;
@@ -54,7 +57,7 @@ namespace PSOinCS
                     p1.bestf = double.MaxValue;
                     swarm[i] = p1;
                 }
-                for (int t = 0; t < 5000; t++)
+                for (int t = 0; t < 5000; t++)//迭代次数
                 {
                     for (int i = 0; i < NUM; i++)
                     {
@@ -77,7 +80,9 @@ namespace PSOinCS
                         }
                     }
                 }
-                Console.WriteLine("{0}", gbestf);
+                sw.Stop();
+                time = sw.Elapsed.Seconds.ToString();
+                //Console.WriteLine("{0}", gbestf);
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Form1());
